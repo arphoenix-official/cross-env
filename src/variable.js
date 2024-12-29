@@ -42,7 +42,7 @@ function replaceListDelimiters(varValue, varName = '') {
  * @returns {String} Converted value
  */
 function resolveEnvVars(varValue) {
-  const envUnixRegex = /(\\*)(\$(\w+)|\${(\w+)})/g // $my_var or ${my_var} or \$my_var
+  const envUnixRegex = /(\\*)(\$(\w+)|\${(\w+)(?::[-=?+]?([^}]+))?})/g // $my_var or ${my_var} or \$my_var
   return varValue.replace(
     envUnixRegex,
     (_, escapeChars, varNameWithDollarSign, varName, altVarName) => {
